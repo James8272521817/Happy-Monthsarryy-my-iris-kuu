@@ -1,22 +1,39 @@
 $(document).ready(function () {
-  var envelope = $("#envelope");
-  var btn_open = $("#open");
-  var btn_reset = $("#reset");
 
-  envelope.click(function () {
-    open();
-  });
-  btn_open.click(function () {
-    open();
-  });
-  btn_reset.click(function () {
-    close();
-  });
+    var envelope = $("#envelope");
+    var btn_open = $("#open");
+    var btn_reset = $("#reset");
+    var music = document.getElementById("bgMusic");
 
-  function open() {
-    envelope.addClass("open").removeClass("close");
-  }
-  function close() {
-    envelope.addClass("close").removeClass("open");
-  }
+    envelope.click(function () {
+        open();
+    });
+
+    btn_open.click(function () {
+        open();
+    });
+
+    btn_reset.click(function () {
+        close();
+    });
+
+    function open() {
+
+        envelope.addClass("open").removeClass("close");
+
+        // Play music after the user opens the letter
+        music.play().catch(function(error){
+            console.log("Playback failed:", error);
+        });
+    }
+
+    function close() {
+
+        envelope.addClass("close").removeClass("open");
+
+        music.pause();
+        music.currentTime = 0;
+
+    }
+
 });
