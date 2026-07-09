@@ -18,22 +18,18 @@ $(document).ready(function () {
     });
 
     function open() {
-
         envelope.addClass("open").removeClass("close");
 
-        // Play music after the user opens the letter
-        music.play().catch(function(error){
-            console.log("Playback failed:", error);
+        music.play().catch(function (err) {
+            console.log(err);
         });
     }
 
     function close() {
-
         envelope.addClass("close").removeClass("open");
 
         music.pause();
         music.currentTime = 0;
-
     }
 
 });
