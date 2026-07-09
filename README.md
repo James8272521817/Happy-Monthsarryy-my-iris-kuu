@@ -1,1 +1,0 @@
-# JELYY-GANDA
